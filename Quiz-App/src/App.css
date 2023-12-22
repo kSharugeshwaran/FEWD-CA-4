@@ -163,6 +163,14 @@ button{
   color: white;
   transform: scale(1.2);
 }
+.results{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.restart{
+  margin-left: 8vh;
+}
 
 
 @media only screen and (max-width: 500px){

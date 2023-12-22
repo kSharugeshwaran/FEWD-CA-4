@@ -108,7 +108,7 @@ export const Football = ({theme,setTheme}) => {
     <>{showResult ? <ResultPage theme={theme} setTheme={setTheme}/> : showMain? <MainPage/> :(
         <div>
         <div className='container' style={{backgroundColor: localTheme? "rgba(255, 255, 255, 0.32)" : "rgba(0, 0, 0, 0.297)"}}>
-            <p style={{color: (high ? "yellow":"white")}}>{quizQuestions.question}</p>
+            <p style={{color: localTheme ? (high ? "yellow":"white") : (high ? "rgb(201, 2, 2)": "white" )}}>{quizQuestions.question}</p>
         <div className='grid'>
         {quizQuestions.options.map((option, i) => (
   <button

@@ -29,7 +29,7 @@ const ResultPage = ({ theme, setTheme }) => {
             }}>
             <div id='results'>
             <p style={{color:  "white"}}>Quiz Results</p>
-            <p className='score' style={{color:  "white"}} >Your Score = {result}%</p>
+            <p className='score' style={{color:  "white"}} >{score} out of 10 are correct - {result}%</p>
             <button className='restart' onClick={() => setMain(true)}>
               R E S T A R T
             </button>
