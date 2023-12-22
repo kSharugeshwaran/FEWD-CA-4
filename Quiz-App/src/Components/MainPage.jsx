@@ -7,12 +7,12 @@ const MainPage = ({theme,setTheme}) => {
     })
     
   return (
-    <div className='body'>{show ?<Football theme={theme} setTheme={setTheme}/>:(
+    <>{show ?<Football theme={theme} setTheme={setTheme}/>:(
         <div className='nameContainer'>
         <h2 className='name'>TriviaTurf</h2>
         <button onClick={() => {setShow(true)}} className='start'>K I C K - O F F</button>
     </div>)}
-    </div>
+    </>
     
   )
 }

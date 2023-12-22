@@ -4,6 +4,14 @@ import MainPage from './MainPage';
 import ResultPage from './ResultPage';
 import App from '../App';
 export const Football = ({theme,setTheme}) => {
+   const [localTheme, setLocalTheme] = useState(theme)
+    useEffect(() => {
+      setLocalTheme(theme);
+    }, [theme]);
+
+  const[high, setHigh] = useState(() => {
+    return false
+  })
     const[showMain,setShowMain] = useState(() => {
         return false
     })
@@ -19,9 +27,7 @@ export const Football = ({theme,setTheme}) => {
     const [showResult, setResult] = useState(() => {
         return false
     })
-    useEffect(() => {
-      setLocalTheme(theme);
-    }, [theme]);
+   
     
 
     // useEffect( () => {
@@ -96,13 +102,13 @@ export const Football = ({theme,setTheme}) => {
       };
    
       
-  const [localTheme, setLocalTheme] = useState(theme)
+  
       
   return (
     <>{showResult ? <ResultPage theme={theme} setTheme={setTheme}/> : showMain? <MainPage/> :(
         <div>
         <div className='container' style={{backgroundColor: localTheme? "rgba(255, 255, 255, 0.32)" : "rgba(0, 0, 0, 0.297)"}}>
-            <p style={{color: localTheme ? "black": "white"}}>{quizQuestions.question}</p>
+            <p style={{color: localTheme ? (high ? "yellow":"white"): high?"yellow":"black"}}>{quizQuestions.question}</p>
         <div className='grid'>
         {quizQuestions.options.map((option, i) => (
   <button
@@ -114,7 +120,9 @@ export const Football = ({theme,setTheme}) => {
   </button>
 ))}
         </div>
-            
+            <button className='high' onClick={() => {
+              setHigh(!high)
+            }}>{high ? "REMOVE HIGHLIGHT" : "HIGHLIGHT TEXT"}</button>
 
             
         </div>

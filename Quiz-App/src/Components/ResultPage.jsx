@@ -1,25 +1,45 @@
-import React, { useState } from 'react'
-import MainPage from './MainPage'
-import { Football } from './Football'
+import React, { useState, useEffect } from 'react';
+import MainPage from './MainPage';
 
-const ResultPage = ({theme,setTheme}) => {
-const [showMainPage,setMain] = useState(() => {
-  return false
-})
-const score  = JSON.parse(localStorage.getItem("score"))
-const result = (score/10)*100
-console.log(score)
+const ResultPage = ({ theme, setTheme }) => {
+  const [localTheme, setLocalTheme] = useState(theme);
+
+  useEffect(() => {
+    setLocalTheme(theme);
+  }, [theme]);
+
+  const [showMainPage, setMain] = useState(false);
+
+  const score = JSON.parse(localStorage.getItem('score'));
+  const result = (score / 10) * 100;
+  console.log(score);
+
   return (
     <>
-      {showMainPage ? (<MainPage/>) : <div>
-        <div className='container'>
-            <p>Quiz Results</p>
-            <p className='result'>Your Score = {result}%</p>
-            <button className='restart' onClick={() => {setMain(true)}}>R E S T A R T</button>
+      {showMainPage ? (
+        <MainPage />
+      ) : (
+        <div>
+          <div
+            className='container'
+            style={{
+              backgroundColor: localTheme
+                ? 'rgba(255, 255, 255, 0.32)'
+                : 'rgba(0, 0, 0, 0.297)',
+            }}>
+            <div id='results'>
+            <p style={{color:  "white"}}>Quiz Results</p>
+            <p className='score' style={{color:  "white"}} >Your Score = {result}%</p>
+            <button className='restart' onClick={() => setMain(true)}>
+              R E S T A R T
+            </button>
+            </div>
+            
+          </div>
         </div>
-    </div>}  
+      )}
     </>
-  )
-}
+  );
+};
 
-export default ResultPage
+export default ResultPage;
